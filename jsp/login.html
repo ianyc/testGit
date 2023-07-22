@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>SPAWS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=big5" />
+		
+		<style type="text/css">
+		<!--
+		.style2 {color: #FF0000}
+		.style8 {
+			font-family: "微軟正黑體";
+			font-size: 20px;
+		}
+		-->
+		</style>
+		
+		<script language="JavaScript" src="../wutil/js/util.js"></script>
+		<script language="javascript">
+
+		function dologin(){
+			var obj = document.form;
+			if(check()){	
+				obj.username.value = base64encode(obj.user.value);
+				obj.user.disabled = true;
+				obj.userPd.disabled = true
+				obj.action = "checkLogin.jsp";
+				obj.submit();
+			}	
+		}
+		
+		//確認輸入資料
+		function check(){
+			var obj = document.form;
+			var ok = true;
+			var msg="";
+			if(obj.user.value == ""){
+				msg = msg + "\n<請輸入帳號>\n";
+				ok = false;
+			}
+			if(obj.userPd.value == ""){
+				msg = msg + "\n<請輸入密碼>\n";
+				ok = false;
+			}
+			
+			if(ok == false)
+				alert(msg);
+			return ok;
+		}	
+
+		//當按下enter鍵時執行setByCond()
+		function callkeydownhandler(evnt) {
+			ev = (evnt) ? evnt : event;
+			if(ev.keyCode == '13'){
+				dologin();
+			}
+		}
+
+		if (window.document.addEventListener) {
+			   window.document.addEventListener("keydown", callkeydownhandler, false);
+			} else {
+			   window.document.attachEvent("onkeydown", callkeydownhandler);
+			}
+			
+			</script>
+	</head>
+
+
+
+
+
+
+
+
+
+
+
+
+	<body topmargin="100" leftmargin="0" bgcolor="#FFECC4">
+	  <form name="form" method="post" > 
+	   <table width="100%" border="0" cellspacing="2" cellpadding="2">
+			<tr >
+			  <td width="340" align="left" valign="bottom" ></td>
+			  <td width="340" align="left" valign="top" >
+			  <fieldset>
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+				  <td><div align="center" class="style8">SPAWS</div></td>
+				</tr>
+				<tr>
+				  <td><hr></td>
+				</tr>
+				<tr>
+				  <td>			     
+					 <table width="100%" border="0" cellspacing="2" cellpadding="2">
+						  <tr>
+							<td width="11%" rowspan="2"><img src="../images/user.png" width="54" height="54" /></td>
+							<td width="27%" class="login" >帳號：</td>
+							<td width="56%" ><input name="user" type="text" size="16" maxlength="20" tabindex="1"></td>
+							</tr>
+						  <tr >
+							<td width="27%" class="login" >密碼：</td>
+							<td width="56%"><input name="userPd" type="password" size="18" maxlength="20" tabindex="2" autocomplete="off"></td>
+							</tr>
+						   <tr>
+							<td height="42">&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>
+								<input type="button" name="login" value="登入" tabindex="3" onClick="dologin()">
+								<input type="reset" name="cancel" value="取消" tabindex="4">
+								<input type="hidden" name="username">
+							</td>
+							</tr>
+							<tr>
+							  <td colspan="3"><hr></td>
+							</tr>
+							 <tr>
+							<td height="42" colspan="3"><span class="style2">您現在存取的是中華電信股份有限公司之資訊系統，所有的系統使用情形將會受到監控與記錄，使用本系統表示您已同意被監控與記錄。如未經授權使用本系統，本公司將保留法律追訴權。</span></td>
+							</tr>
+					  </table>				  
+					</td>
+				</tr>
+			  </table>
+			  </fieldset>
+			  </td>
+			  <td width="384">&nbsp;</td>
+			</tr>
+		</table>
+	  </form>
+	</body>
+</html>
