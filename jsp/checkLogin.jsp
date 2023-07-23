@@ -8,3 +8,6 @@ String username = request.getParameter("username");
 System.out.println(username);
 
 %>
+
+
+Remote add msg
